@@ -1,8 +1,18 @@
 # Dependencies imports
 from flask import Flask
+from flask_mysqldb import MySQL
 
 # Instance of Flask class
 app = Flask(__name__)
+
+# Conection to Data Base
+app.config['MYSQL_HOST'] = 'localhost'
+app.config['MYSQL_USER'] = 'jcjohan'
+app.config['MYSQL_PASSWORD'] = 'password'
+app.config['MYSQL_DB'] = 'flaskcontacts'
+
+
+mysql = MySQL()
 
 # Routes of the application
 @app.route('/')
