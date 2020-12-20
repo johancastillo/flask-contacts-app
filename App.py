@@ -26,9 +26,16 @@ def addContact():
         fullname = request.form['fullname'] 
         phone = request.form['phone'] 
         email = request.form['email'] 
-        print(fullname)
-        print(phone)
-        print(email)
+        
+        # Get connection
+        cursor = mysql.connection.cursor()
+
+        # Write sentence
+        cursor.execute('INSERT INTO contacts (fullname, phone, email) VALUES (%s, %s, %s)', (fullname, phone, email))
+
+        # Execute 
+        mysql.connection.commit()
+        
         return 'received'
 
 @app.route('/edit')
