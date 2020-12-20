@@ -12,7 +12,7 @@ app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'flaskcontacts'
 
 
-mysql = MySQL()
+mysql = MySQL(app)
 
 # Routes of the application
 @app.route('/')
