@@ -14,11 +14,12 @@ app.config['MYSQL_DB'] = 'flaskcontacts'
 
 mysql = MySQL(app)
 
-# Routes of the application
+# Route root
 @app.route('/')
 def Home():
     return render_template('index.html')
 
+# Receive data with the method POST from the route root
 @app.route('/add-contact', methods=['POST'])
 def addContact():
     if request.method == 'POST':
