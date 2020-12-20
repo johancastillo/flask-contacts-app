@@ -6,8 +6,8 @@ app = Flask(__name__)
 
 # Routes of the application
 @app.route('/')
-def home():
-    return "Hello World"
+def Home():
+    return '<h1 style="text-align:center">Hello World</h1>'
 
 # Run server
 if __name__ == '__main__':
