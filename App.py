@@ -1,5 +1,5 @@
 # Dependencies imports
-from flask import Flask
+from flask import Flask, render_template
 from flask_mysqldb import MySQL
 
 # Instance of Flask class
@@ -17,7 +17,7 @@ mysql = MySQL(app)
 # Routes of the application
 @app.route('/')
 def Home():
-    return '<h1 style="text-align:center">Hello World</h1>'
+    return render_template('index.html')
 
 @app.route('/add-contact')
 def addContact():
