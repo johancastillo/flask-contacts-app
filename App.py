@@ -1,5 +1,5 @@
 # Dependencies imports
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 from flask_mysqldb import MySQL
 
 # Instance of Flask class
@@ -19,9 +19,16 @@ mysql = MySQL(app)
 def Home():
     return render_template('index.html')
 
-@app.route('/add-contact')
+@app.route('/add-contact', methods=['POST'])
 def addContact():
-    return 'Add contact'
+    if request.method == 'POST':
+        fullname = request.form['fullname'] 
+        phone = request.form['phone'] 
+        email = request.form['email'] 
+        print(fullname)
+        print(phone)
+        print(email)
+        return 'received'
 
 @app.route('/edit')
 def editContact():
