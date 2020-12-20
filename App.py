@@ -9,6 +9,10 @@ app = Flask(__name__)
 def Home():
     return '<h1 style="text-align:center">Hello World</h1>'
 
+@app.route('/add-contact')
+def addContact():
+    return 'Add contact'
+
 # Run server
 if __name__ == '__main__':
     app.run(port = 4000, debug = True)
