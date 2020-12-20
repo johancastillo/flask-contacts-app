@@ -13,7 +13,7 @@ app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'flaskcontacts'
 ```
 
-2. Execute the sentensives SQL of the file database.sql in MySQL
+2. Execute the sentensives SQL of the file `database.sql` in MySQL
 
 ```mysql
 > source ./database.sql
