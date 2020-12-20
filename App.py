@@ -13,6 +13,14 @@ def Home():
 def addContact():
     return 'Add contact'
 
+@app.route('/edit')
+def editContact():
+    return 'edit contact'
+
+@app.route('/delete')
+def deleteContact():
+    return 'delete contact'
+
 # Run server
 if __name__ == '__main__':
     app.run(port = 4000, debug = True)
