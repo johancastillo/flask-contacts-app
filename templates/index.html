@@ -1,3 +1,4 @@
+<!-- Show messages of the server with flash module -->
 {% with messages = get_flashed_messages() %}
 {% if messages %}
 {% for message in messages %}
@@ -6,6 +7,7 @@
 {% endif %}
 {% endwith %}
 
+<!-- Form for add data -->
 <form action="/add-contact" method="POST">
     <input type="text" name="fullname" placeholder="Fullname" autocomplete="off" required>
     <input type="text" name="phone" placeholder="Phone" autocomplete="off" required>
@@ -15,3 +17,19 @@
         Save
     </button>
 </form>
+
+
+<!-- Table for show data -->
+<table>
+    <thead>
+        <tr>
+            <td>Fullname</td>
+            <td>Phone</td>
+            <td>Email</td>
+            <td>Operations</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>

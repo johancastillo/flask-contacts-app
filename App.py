@@ -19,6 +19,12 @@ app.secret_key = 'mysecretkey'
 # Route root
 @app.route('/')
 def Home():
+    # Consulte to the data base
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM contacts')
+    data = cursor.fetchall()
+    print(data)
+
     return render_template('index.html')
 
 # Receive data with the method POST from the route root
