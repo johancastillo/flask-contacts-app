@@ -23,9 +23,9 @@ def Home():
     cursor = mysql.connection.cursor()
     cursor.execute('SELECT * FROM contacts')
     data = cursor.fetchall()
-    print(data)
 
-    return render_template('index.html')
+    # View
+    return render_template('index.html', contacts = data)
 
 # Receive data with the method POST from the route root
 @app.route('/add-contact', methods=['POST'])
