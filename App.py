@@ -1,18 +1,20 @@
 # Dependencies imports
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for, flash
 from flask_mysqldb import MySQL
 
 # Instance of Flask class
 app = Flask(__name__)
 
-# Conection to Data Base
+# Conection to Data Base MySQL
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'jcjohan'
 app.config['MYSQL_PASSWORD'] = 'password'
 app.config['MYSQL_DB'] = 'flaskcontacts'
 
-
 mysql = MySQL(app)
+
+# Settings for sessions
+app.secret_key = 'mysecretkey'
 
 # Route root
 @app.route('/')
@@ -37,6 +39,7 @@ def AddContact():
         # Execute 
         mysql.connection.commit()
         
+        flash('Contact Added Successfully')
         return redirect(url_for('Home'))
 
 @app.route('/edit')
