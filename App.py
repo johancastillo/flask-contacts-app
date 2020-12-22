@@ -48,10 +48,12 @@ def AddContact():
         flash('Contact Added Successfully')
         return redirect(url_for('Home'))
 
-@app.route('/edit')
-def editContact():
-    return 'edit contact'
+# Edit data
+@app.route('/edit/<string:id>')
+def editContact(id):
+    return 'edit contact ' + id
 
+# Delete data
 @app.route('/delete')
 def deleteContact():
     return 'delete contact'
