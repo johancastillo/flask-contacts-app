@@ -49,9 +49,14 @@ def AddContact():
         return redirect(url_for('Home'))
 
 # Edit data
-@app.route('/edit/<string:id>')
+@app.route('/edit/<id>')
 def editContact(id):
-    return 'edit contact ' + id
+    cursor = mysql.connection.cursor()
+    cursor.execute('SELECT * FROM contacts WHERE id = %s', (id))
+    data = cursor.fetchall()
+    print(data[0])
+
+    return 'received'
 
 # Delete data
 @app.route('/delete/<string:id>')
