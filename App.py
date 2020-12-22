@@ -1,5 +1,5 @@
 # Dependencies imports
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for
 from flask_mysqldb import MySQL
 
 # Instance of Flask class
@@ -21,7 +21,7 @@ def Home():
 
 # Receive data with the method POST from the route root
 @app.route('/add-contact', methods=['POST'])
-def addContact():
+def AddContact():
     if request.method == 'POST':
         fullname = request.form['fullname'] 
         phone = request.form['phone'] 
@@ -31,12 +31,13 @@ def addContact():
         cursor = mysql.connection.cursor()
 
         # Write sentence
-        cursor.execute('INSERT INTO contacts (fullname, phone, email) VALUES (%s, %s, %s)', (fullname, phone, email))
+        cursor.execute('INSERT INTO contacts (fullname, phone, email) VALUES (%s, %s, %s)', 
+        (fullname, phone, email))
 
         # Execute 
         mysql.connection.commit()
         
-        return 'received'
+        return redirect(url_for('Home'))
 
 @app.route('/edit')
 def editContact():
