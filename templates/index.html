@@ -1,3 +1,6 @@
+{% extends 'layout.html' %}
+
+{% block body %}
 <!-- Show messages of the server with flash module -->
 {% with messages = get_flashed_messages() %}
 {% if messages %}
@@ -13,7 +16,7 @@
     <input type="text" name="phone" placeholder="Phone" autocomplete="off" required>
     <input type="email" name="email" placeholder="Email" autocomplete="off" required>
 
-    <button type="submit">
+    <button type="submit" class="btn">
         Save
     </button>
 </form>
@@ -43,3 +46,5 @@
         {% endfor %}
     </tbody>
 </table>
+
+{% endblock %}
