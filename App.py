@@ -28,7 +28,7 @@ def Home():
     return render_template('index.html', contacts = data)
 
 # Receive data with the method POST from the route root
-@app.route('/add-contact', methods=['POST'])
+@app.route('/add-contact', methods = ['POST'])
 def AddContact():
     if request.method == 'POST':
         fullname = request.form['fullname'] 
@@ -50,13 +50,32 @@ def AddContact():
 
 # Edit data
 @app.route('/edit/<id>')
-def editContact(id):
+def GetContact(id):
     cursor = mysql.connection.cursor()
     cursor.execute('SELECT * FROM contacts WHERE id = %s', (id))
     data = cursor.fetchall()
-    print(data[0])
+    
+    return render_template('edit-contact.html', contact = data[0])
 
-    return 'received'
+@app.route('/update/<id>', methods = ['POST'])
+def UpdateContact(id):
+    if request.method == 'POST':
+        fullname = request.form['fullname']
+        phone = request.form['phone']
+        email = request.form['email']
+
+        cursor = mysql.connection.cursor()
+        cursor.execute(""" 
+            UPDATE contacts
+            SET fullname = %s,
+                phone = %s,
+                email = %s
+            WHERE id = %s
+        """, (fullname, phone, email, id))
+
+        cursor.connection.commit()
+
+        return redirect(url_for('Home'))
 
 # Delete data
 @app.route('/delete/<string:id>')

@@ -15,7 +15,7 @@ CREATE TABLE contacts (
 
 /* Inserting data in the table */
 INSERT INTO contacts (fullname, phone, email) 
-VALUES ("test", "test", "test");
+VALUES ("test", "123456", "test@gmail.com");
 
 /* Validations */
 SHOW TABLES;
